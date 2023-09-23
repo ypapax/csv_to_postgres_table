@@ -125,6 +125,7 @@ func postgresFieldsToCreateTablePostgresExpression(tableName string, pp []Postgr
 		fieldLines = append(fieldLines, l)
 	}
 	lines = append(lines, strings.Join(fieldLines, ",\n"))
+	lines = append(lines, "CONSTRAINT "+tableName+"_pk PRIMARY KEY (id),")
 	lines = append(lines, ")")
 	return strings.Join(lines, "\n"), nil
 }
